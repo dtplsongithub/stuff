@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h2>dtpls's """portable""" seven-segment number displayer</h2>
+  <canvas id="canvas"></canvas><br>
+  <label for="n">number to display:</label>
+  <input type="range" id="n" name="n" value="4" min="0" max="9"><br>
+  <label for="margin">segment margin: </label>
+  <input type="range" id="margin" name="margin" value="0" min="0" max="5"><br>
+  <label for="segmentthickness">segment thickness</label>
+  <input type="range" id="segmentthickness" name="segmentthickness" value="25" min="10" max="33"> segment thickness is also determined by size x. 33 will be for example 33% of the size x
+  <br>
+  <label for="st">segment type</label>
+  <select name="st" id="st">
+    <option value="hexagon">hexagon</option>
+    <option value="trapeze">trapeze</option>
+  </select><br>
+  <label for="oncolor">Color when activated: </label>
+  <input type="color" id="oncolor" name="oncolor" value="#ff0000">
+  <label for="onfcolor">Color when deactivated: </label>
+  <input type="color" id="onfcolor" name="onfcolor" value="#ffffff"><br>
+  <label for="size x">size x</label>
+  <input type="range" id="size x" name="size x" value="20" min="10" max="60"><br>
+  <label for="size y">size y</label>
+  <input type="range" id="size y" name="size y" value="40" min="20" max="120"><br>
+  <label for="px">position x</label>
+  <input type="range" id="px" name="px" value="50" min="0" max="300"><br>
+  <label for="py">position y</label>
+  <input type="range" id="py" name="py" value="90" min="0" max="300"><br>
+
+
+<hr>
+  just add "&lt;script src="https://psdnd.dateplays.repl.co/dsevendigit.js">&lt;/script>" to your website and in your canvas code add:<br> <pre id="b">
+    
+  </pre>
+  <br><br><br>
+  <script src="script.js"></script>
+  <script src="dsevendigit.js"></script>
+</body>
+
+</html>

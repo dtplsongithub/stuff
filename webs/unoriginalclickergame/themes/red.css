@@ -1,0 +1,87 @@
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  color: #f00;
+  background: #400;
+  font-size: 18px !important;
+  font-family: "Consolas";
+}
+#button {
+  user-select:none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ch:hover {
+  width: calc(264px * 1.1);
+  height: calc(197px * 1.1);
+}
+.ch:active {
+  width: calc(264px * 0.8);
+  height: calc(197px * 0.8);
+}
+#up {
+  display: flex;
+  position: absolute;
+  right: -305px;
+  top: 0px;
+  height: 100%;
+  color: #f00;
+  transition-duration: 1s;
+}
+#up:hover {
+  right: 0px;
+}
+#upg {
+  border: 2px solid #f00;
+  padding: 5px;
+  width: 75px;
+  height: 20px;
+  background: #400;
+}
+#upd {
+  border: 2px solid #f00;
+  height: 100%;
+  width: 300px;
+  background: #400;
+  padding: 0px;
+}
+button {
+  width: 100%;
+  border: 2px solid #f00;
+  background: #400;
+  color: #f00;
+  font-family: "Consolas";
+}
+button:hover {
+  background: #700;
+}
+button:active {
+  border: 2px solid #f00;
+  background: #200;
+}
+.bmenu {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+a:link {
+  color: #f00;
+}
+a:hover {
+  color: white;
+}
+a:hover::before {
+  content: "> ";
+}
+a:visited {
+  color: #800;
+}
+a:active {
+  color: white;
+}
+.loading {
+  display:none;
+}

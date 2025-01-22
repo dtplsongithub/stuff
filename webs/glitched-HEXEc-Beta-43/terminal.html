@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>The Terminal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js">
+	</script>
+	<style>
+		/* @font-face {
+      font-family: 'dosvga';
+      src: url('https://stuff.mkcodes.repl.co/Perfect DOS VGA 437 Win.ttf'); 
+    }
+    * {
+      font-family: 'dosvga';
+    } */
+		body {
+			background: black;
+			color: lime;
+		}
+
+		@-webkit-keyframes blinker {
+			0% {
+				visibility: visible;
+			}
+
+			50% {
+				visibility: hidden;
+			}
+
+			100% {
+				visibility: visible;
+			}
+		}
+
+		@keyframes blinker {
+			0% {
+				visibility: visible;
+			}
+
+			50% {
+				visibility: hidden;
+			}
+
+			100% {
+				visibility: visible;
+			}
+		}
+
+		blink {
+			-webkit-animation: blinker steps(1) 1s infinite;
+			animation: blinker steps(1) 1s infinite;
+		}
+	</style>
+
+</head>
+
+<body>
+	<code id="term"><label id="termoutput">> </label><blink>_</blink></code>
+    <br>
+    <code><label id="termreturn"></label></code>
+    <script>
+      function outeval(code) {
+        var xeval = window.eval;
+        try {xeval =  window.parent.eval;} catch (e) {}
+        return xeval(code);
+      }
+
+      (function () {
+        var TEXT = "";
+        var termelem = document.getElementById('term');
+        var termoutput = document.getElementById('termoutput');
+        var specialkeys = ["Control", "Shift", "CapsLock", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "PageUp", "PageDown", "End", "NumLock","Tab","Alt","AltGraph","Insert","Meta"];
+        for (i = 1; i <= 12; i++) specialkeys.push('F' + i);
+
+        function scrollDown() {
+          // auto scroll
+          if (window.scrollTo) window.scrollTo(0, document.body.scrollHeight);
+          document.body.scrollTop = document.body.scrollHeight;
+          document.documentElement.scrollTop = document.documentElement.scrollHeight;
+        }
+
+        let cmd = { 
+          help: function (args) {
+            var helpData = {
+              "help": "This",
+              "clear": "clear the terminal",
+              "echo": "echo the text | args: [some text]",
+              "appslist": "list all applications",
+              "load": "load script like batch | args: <url>",
+              "reboot": "restart the os | args: [boot mode]",
+              "exit": "exit the terminal"
+            };
+
+            var tmp = '===== Commands List =====\n';
+            for (i in cmd) {
+              if (i !== "alt") {
+                tmp += (i + ': ' + (helpData[i] ? helpData[i] : "<none>") + "\n");
+              }
+            }
+            printReturn(tmp);
+            return 0; 
+          },
+          alt: function (arg) {
+            if (!window.parent.msgbox) return;
+            printReturn("");
+            // Uncaught (in promise) Icon not valid.
+            window.parent.msgbox('<iframe src="credits v2.0.html" frameBorder="0" style="width:100%;height:calc(100% - 19px);" width="100%" height="100%"></iframe>', "dialogue", "HEXEc Credits v2.0", []); // moved here
+          },
+          clear: function () { 
+            termoutput.innerHTML = "> "; 
+            return 0;
+          }, 
+          echo: function (args) {
+            printReturn(args);
+            return 0;
+          }, 
+          appslist: function () {
+            var apps = undefined;
+            try { apps = window.parent.apps; } catch (er) {}
+            if (!apps) { printError(new Error("Apps not found")); return 1; };
+            var tmp = '===== Applications List =====\n';
+            for (app in apps) tmp += (he.encode(app) + (apps[app].name ? ": " + he.encode(apps[app].name) : "") + "\n");
+            printReturn(tmp);
+            return 0;
+          },
+          load: function (url) {
+            fetch(url).then(d => {
+              if (!d.ok) throw new Error("ERROR: Script not found");
+              d.text().then(s => {
+                try {
+                  eval(s);
+                } catch (err) {
+                  throw err;
+                }
+              }).catch(e => { throw e; });
+            }).catch(printError);
+          },
+          reboot: function (mode) {
+            var m = mode.trim();
+            var p = window.location;
+            try { p =  window.parent.location; } catch (e) { return printError(new Error("failed to reboot")); };
+            var hash = "";
+            if (m === "help") return printReturn("normal, cmdonly, cmdgui, noplugin"); else 
+            if (m === "" || m === "normal") hash = "#"; else
+            if (m === "cmdonly") hash = "#bootmode=cmdonly"; else
+            if (m === "cmdgui") hash = "#bootmode=cmdgui"; else
+            if (m === "noplugin") hash = "#bootmode=no-plugins"; else return printError(new Error("boot mode is invalid"));
+            try {
+              p.hash = hash;
+              p.reload();
+            } catch (e) {
+              return printError(new Error("failed to reboot"));
+            }
+          },
+          exit: function () {
+            window.close();
+            return 0;
+          }
+        }        
+        
+        document.onkeydown = function (a) {
+            a.preventDefault(true)
+            if (specialkeys.includes(a.key)) { return; }
+            a.key = a.key.replace("", " ");
+            if (a.key != "Enter") {
+                if (a.key != "Backspace") {
+                    if (a.key != "Delete") {
+                        TEXT = TEXT + a.key; printText(a.key);
+                    } else clearText();
+                } else {
+                    deletText();
+                }
+            } else {
+                var apps = undefined;
+
+                try {
+                  apps = window.parent.apps;
+                } catch (er) {}
+
+                if (apps && Object.keys(apps).includes(TEXT)) {
+                    apps[TEXT].exec();
+                    printReturn('');
+                    clearText();
+                } else {
+                  var args = "";
+                  var tmp2 = TEXT.split(" ");
+                  var tmp = TEXT.split(" ");
+                  if (tmp[0] === TEXT) args = ""; else { tmp.shift(); args = tmp.join(' '); };
+
+                  if (Object.keys(cmd).includes(tmp2[0])) {
+                      cmd[tmp2[0]](args);
+                      clearText();
+                  } else {
+                      try {
+                        printReturn(outeval(TEXT));
+                      } catch (err) {
+                        if (err) { printError(err) }
+                      }
+                    clearText();
+                   }
+                }
+            }
+        }
+
+        function printReturn(a) {
+            if (a === undefined || a === null || a === NaN) { termoutput.innerHTML += "<br> > "; return };
+            termoutput.innerHTML += "<br>";
+            printText(a);
+            termoutput.innerHTML += "<br> > ";
+            scrollDown();
+        }
+
+        function printText(a) {
+          if (a === undefined || a === null || a === NaN) return;
+          termoutput.innerHTML = termoutput.innerHTML + he.encode(a.toString()).replace(/(?:\r\n|\r|\n)/g, '<br>');
+        }
+
+        function deletText() {
+            let x = termoutput.innerHTML.split("")
+            let a = TEXT.split("");
+            x.pop();
+            a.pop();
+            TEXT = a.join("");
+            var string = x.join("");
+            termoutput.innerHTML = string;
+        }
+
+        function clearText() {
+            TEXT = "";
+        }
+
+        function printError(err) {
+            termoutput.innerHTML += "<br>";
+            termoutput.innerHTML += "<label style=\"color: red\">" + err.toString() + "</label>";
+            termoutput.innerHTML += "<br> > ";
+        }
+      })();
+    </script>
+    </body>
+</html>

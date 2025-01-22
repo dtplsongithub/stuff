@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WaterFox</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<style>
+		#dialog label,
+		#dialog input {
+		}
+
+		#dialog label {
+			margin-top: 5em;
+		}
+
+		#dialog input,
+		#dialog textarea {
+			width: 65%;
+		}
+
+		#tabs {
+			margin-top: 3em;
+		}
+
+		#tabs li .ui-icon-close {
+			float: left;
+			margin: 4em 0.2em 2 0.33em;
+			cursor: pointer;
+		}
+
+		#add_tab {
+			cursor: pointer;
+		}
+
+		iframe {
+			outline: none;
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+
+		.ui-tabs .ui-tabs-panel {
+			height: calc(100vh - 140px);
+		}
+
+		html,
+		body {
+			overflow: hidden;
+		}
+
+		button div {
+			transition: 0.5s transform;
+		}
+
+		@keyframes reloading {
+			from {
+				transform: rotate(0turn);
+			}
+			to {
+				transform: rotate(1turn);
+			}
+		}
+
+		button div.reloading {
+			animation: reloading 1.7s ease infinite;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.js">
+	</script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+	</script>
+	<script>
+		$( function() {
+    var tabTitle = $( "#tab_title" ),
+      tabContent = $( "#tab_content" ),
+      tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
+      tabCounter = 2;
+ 
+    var tabs = $( "#tabs" ).tabs();
+ 
+    // Modal dialog init: custom buttons and a "close" callback resetting the form inside
+    var dialog = $( "#dialog" ).dialog({
+      autoOpen: false,
+      modal: true,
+      buttons: {
+        Add: function() {
+          addTab();
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();
+      }
+    });
+ 
+    // AddTab form: calls addTab function on submit and closes the dialog
+    var form = dialog.find( "form" ).on( "submit", function( event ) {
+      addTab();
+      dialog.dialog( "close" );
+      event.preventDefault();
+    });
+ 
+    // Actual addTab function: adds new tab using the input from the form above
+    function addTab() {
+      var label = "Tab " + tabCounter,
+        id = "tabs-" + tabCounter,
+        li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
+        tabContentHtml = `<input type="url" value="https://bing.com/"></input><button id="reload"><div>&#x21bb;</div></button><iframe id="frame" src='//bing.com/' style="width:100%;height:100%;"> </iframe>`;
+ 
+      tabs.find( ".ui-tabs-nav" ).append( li );
+      tabs.append( "<div id='" + id + "'>" + tabContentHtml + "</div>" );
+      tabs.tabs( "refresh" );
+			var linkbox = $("#"+id)[0].querySelector("input");
+			linkbox.addEventListener("keydown",function(e){
+				if(e.keyCode==13){
+					// alert("test!")
+					if(linkbox.value.startsWith("//")){
+						linkbox.value="http:"+linkbox.value;
+					}
+					if(linkbox.value.startsWith("://")){
+						linkbox.value="https"+linkbox.value;
+					}
+					if(!(linkbox.value.startsWith("https://")||linkbox.value.startsWith("http://"))){
+						linkbox.value=('https://www.bing.com/search?q='+linkbox.value.replace(/\+/g,"%2B").replace(/\ /g,"+"))
+					}
+					$("#"+id)[0].querySelector("iframe").src=linkbox.value;
+					$("#"+id)[0].querySelector("button").click();
+				}
+			})
+			$("#tabs")[$("#tabs").length-1].click();
+			$("#"+id)[0].querySelector("button").addEventListener("click",function(){
+				let dis = $("#"+id)[0].querySelector("button");
+				let loaded = false;
+				$("#"+id)[0].querySelector("iframe").onload = function() { dis.children[0].classList.remove("reloading"); loaded=true; };
+				setTimeout(()=>{if(!loaded){
+					dis.children[0].classList.remove("reloading")
+					$("#"+id)[0].querySelector("iframe").src=("about:blank");setTimeout(()=>{$("#"+id)[0].querySelector("iframe").contentDocument.body.innerHTML=('<h1>:/</h1><br>It seems like the website you are trying to acess does not exist, or the website did not answer any data at time.<br>Here are suggested tips to use to fix this current error: <ul><li>Make sure you didn\'t mistype the link, or use your clipboard instead of typing it by hand.</li><li>Reconnect your internet connection.</li><li>The website does not support embedding.</li></ul>');},500)
+				}},10000)
+				$("#"+id)[0].querySelector("iframe").src+="";
+				dis.children[0].classList.add("reloading")
+			})
+      tabCounter++;
+    }
+ 
+    // AddTab button: just opens the dialog
+    $( "#add_tab" )
+      .button()
+      .on( "click", function() {
+        //dialog.dialog( "open" );
+      	addTab();
+      });
+ 
+    // Close icon: removing the tab on click
+    tabs.on( "click", "span.ui-icon-close", function() {
+      var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+      $( "#" + panelId ).remove();
+      tabs.tabs( "refresh" );
+    });
+ 
+    tabs.on( "keyup", function( event ) {
+      if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
+        var panelId = tabs.find( ".ui-tabs-active" ).remove().attr( "aria-controls" );
+        $( "#" + panelId ).remove();
+        tabs.tabs( "refresh" );
+      }
+    });
+  } );
+	</script>
+</head>
+
+<body>
+
+	<div id="dialog" title="Tab data">
+
+	</div>
+
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Presentation</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li><button id="add_tab">+</button>
+
+  </ul>
+  <div id="tabs-1">
+  <h1>Welcome to WaterFox!</h1>
+	<p>Get started with a new, <i>fresh</i> and customizable web browser right at your fingertips.</p>
+  </div>
+</div>
+
+
+</body>
+</html>

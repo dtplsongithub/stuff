@@ -1,0 +1,258 @@
+/*
+[theme.name]Windows 95
+[theme.system]false
+[theme.author]Microsoft
+[theme.version]0.0.0
+*/
+
+/* DO NOT EDIT!!!!!!! */
+
+* { 
+  font-family: 'W95FA';
+	font-weight: 300;
+} 
+
+b{
+	font-weight: 500;
+}
+
+html {
+  cursor: url(/cursors/win95/arrow.cur), auto !important;
+}
+
+button, .wintitle div, #listbar div {
+	cursor: url(/cursors/win95/Cursor_15.cur), pointer !important;
+}
+
+.wintitle:active {
+  cursor: url(/cursors/win95/Cursor_10.cur), move !important;
+}
+
+.desktop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc( 100% - 10px );
+  height: calc( 100% - 10px );
+  padding: 5px 5px;
+  color: #ffffff;
+}
+
+.desktop,body,.boot{
+	  background: #008080;
+}
+
+.windows-lists {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc( 100% - 10px );
+  height:  calc( 100% - 10px );
+}
+
+.window {
+    border: 5px solid #808080;
+    background: #000080;
+		float: left;
+		position:absolute;
+    /* overflow: auto; */
+}
+
+button {
+  background: transparent;
+  /* border-color: black; */
+  color: #fff;
+}
+
+.icons {
+	width: 80px !important;
+	height: 80px !important;
+  margin-left: 5px;
+}
+
+button:hover {
+  /* background: #9999aa; */
+  color: black;
+}
+
+.wininner{
+	background-color: #c0c0c0;
+  color:black; /** text color **/
+  user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+
+.error {  
+  user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+}
+
+:not(.active) .wintitle{
+	background-image: #808080;
+}
+
+.active .wintitle {
+	background-image: #000080;
+}
+
+.wintitle{
+	float:left;
+	margin-right:100%;
+  width:100%;
+}
+
+.wintitle * {
+	float:right;
+}
+
+.wintitlebtn {
+  float: right;
+	cursor: pointer;
+  margin-left: 2px;
+}
+
+.winclosebtn {
+	background-color: #c0c0c0;
+  font-size: 11px;
+}
+
+.winmaximizebtn {
+  font-size: 11px;
+}
+
+.winminimizebtn {
+  font-size: 11px;
+}
+
+.winmaximizebtn:hover, .winminimizebtn:hover {
+  background-color: blue;
+}
+
+.minimizewin {
+  display: inline;
+  color:black;
+  margin-right: 5px;
+  border-color: black;
+  border-style: inherit;
+  padding: 0px 5px;
+}
+
+.minimizewin:hover {
+  color: white;
+  background-color: blue;
+}
+
+button.selected {
+	/* background-color: white; */
+	border:1px black dashed;
+	color:black;
+}
+
+#listbar{
+	border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+  box-shadow: inset 1px 1px #dfdfdf, 1px 0 #000, 0 1px #000, 1px 1px #000;
+  background-color: silver;
+	height: 20px;
+	width: 100vw;
+	float: left;
+	margin:0;
+	padding:0;
+	position: absolute;
+	left:0px;
+	bottom:0px;
+}
+
+@keyframes openanim {
+	from{
+		transform:scaleY(0);
+	}
+	to{
+		transform:scaleY(1);
+	}
+}
+
+@keyframes closeanim {
+	from{
+		transform: translateY(0)
+	}
+	to{
+		transform: translateY(100vh);
+	}
+}
+
+.window:not(.closing){
+	animation: .1s openanim linear;
+}
+
+.window.closing{
+	animation: .1s closeanim linear;
+}
+
+#listbar_clock {
+	float: right;
+	color:black;
+	position: relative;
+	bottom: 1px;
+	right: 5px;
+}
+
+.window.minimizing{
+	animation: .1s openanim linear reverse;
+}
+
+img{
+	image-rendering: -webkit-optimize-contrast;
+}
+
+input, .text, textarea{
+	user-select: text;
+	cursor: url(/cursors/TextSelect.cur), auto;
+}
+
+.resizer-right {
+  width: 5px;
+  height: calc(100% - 19px);
+  top: 19px;
+  background: transparent;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: e-resize;
+}
+
+.resizer-bottom {
+  width: 100%;
+  height: 5px;
+  background: transparent;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: n-resize;
+}
+
+.resizer-both {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+  z-index: 10;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: nw-resize;
+}
+
+@font-face {
+	font-family: "W95FA";
+	src: url(/fonts/W95FA/W95FA.otf);
+}

@@ -1,0 +1,24 @@
+h1, h2, h3, h4, h5, h6{
+  text-align: center;
+}
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Open Sans', sans-serif;
+  background: #ddf;
+}
+
+button {
+  border-radius: 3px;
+  background-color: #fff;
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  height: 30%;
+  up: 400px;
+  font-size:30px
+}
+
+#Achivements {
+  position: absolute;
+  up: 400px;
+}

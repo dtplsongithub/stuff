@@ -1,0 +1,96 @@
+body {
+  background: #000000;
+  color: #fefefb;
+	overflow: hidden;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+	font-family: monospace;
+}
+
+#bootp {
+  position: absolute;
+  width: 80%;
+  background-color: #202324;
+  top: 40px;
+  left: 10%;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid gray;
+  border-bottom: 2px solid gray;
+  box-shadow: inset 2px 2px #dfdfdf, 2px 0 #000, 0 2px #000, 2px 2px #000; 
+  height: 24px;
+}
+
+#bootp-inner {
+  width: 0;
+  height: 22px;
+  background-color: #ffffff;
+  border-top: 2px solid #f3f4f5;
+  border-left: 2px solid #edf3f5;
+  border-right: 2px solid #e1e9eb;
+  border-bottom: 2px solid #d9dcdd;
+}
+
+#bootp-text{
+	position: relative;
+	color:white;
+	bottom: 21px;
+	text-shadow: 3px 3px 2px gray;
+}
+
+.boot { 
+  background: #000000;
+  text-align: center;
+  cursor: url(/cursors/SmoothNo.cur), auto;
+}
+
+#debugglog {
+  background: #000000;
+  z-index: -1;
+  text-align: left;
+	font-family: monospace;
+  top:230px;
+  position:absolute;
+}
+
+#bootp, .boot center {
+  z-index: 50;
+}
+
+.boot center{
+	height: 260px;
+	width: 300px;
+
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+@font-face {
+	font-family: "BDP Clien";
+	src: url(/fonts/BDP Clien/ClienR.ttf), url(/fonts/BDP Clien/ClienRE.ttf), url(/fonts/BDP Clien/ClienI.ttf), url(/fonts/BDP Clien/ClienB.ttf), url(/fonts/BDP Clien/ClienBI.ttf);
+}
+
+iframe#screensaver{
+	width:100vw;
+	height:100vh;
+	margin:0;
+	padding:0;
+	border:none;
+	float:left;
+	position: absolute;
+	top:0px;
+	left:0px;
+}
+
+button::-moz-focus-inner {
+  border: none;
+}
+
+#logo_boot {
+  	filter:invert(1);
+}

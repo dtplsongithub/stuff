@@ -1,0 +1,87 @@
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  color: white;
+  background: linear-gradient(#f0f, yellow);
+  font-size: 18px !important;
+  font-family: "Consolas";
+}
+#button {
+  user-select:none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ch:hover {
+  width: calc(264px * 1.5);
+  height: calc(197px * 1.1);
+}
+.ch:active {
+  width: calc(264px * 0.8);
+  height: calc(197px * 1.4);
+}
+#up {
+  display: flex;
+  position: absolute;
+  right: -305px;
+  top: 0px;
+  height: 100%;
+  color: #277;
+  transition-duration: 1s;
+}
+#up:hover {
+  right: 0px;
+}
+#upg {
+  border: 2px solid #0f0;
+  padding: 5px;
+  width: 75px;
+  height: 20px;
+  background: white;
+}
+#upd {
+  border: 2px solid black;
+  height: 100%;
+  width: 300px;
+  background: #f0f;
+  padding: 0px;
+}
+button {
+  width: 100%;
+  border: 2px solid #f0f;
+  background: blue;
+  color: #587276;
+}
+button:hover {
+  background: white;
+  color: blue;
+}
+button:active {
+  border: 2px solid black;
+  background: yellow;
+}
+.bmenu {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+a:link {
+  color: #0f0;
+}
+a:hover {
+  color: white;
+}
+a:hover::before {
+  content: "→ ";
+}
+a:visited {
+  color: #080;
+}
+a:active {
+  color: red;
+}
+.loading {
+  display:none;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Mathcremental Mods</title>
+	<link href="styles/style.css" rel="stylesheet" type="text/css" />
+	<script src="https://unpkg.com/vue@next" defer>
+
+	</script>
+	<script src="scripts/functions.js" defer>
+
+	</script>
+	<script src="scripts/script.js" defer>
+
+	</script>
+</head>
+
+<body>
+    <h6>Note: the game will delete after 6 days (at 23 July.)</h6>
+    <h5><marquee>NEWS: NAM IS NOT OK IN TROLLBOX! HE IS NAME SPAMMING AND F*CKED ME (dateplays) AND I DONT KNOW WHERE THIS WILL GO!!!!                                                    NEWS:i think i wont dewlete my game, i will make it my own!</marquee></h5>
+	<game-tab-chooser v-for="(tab, idx) in tabs" :switch-tab="switchTab" :idx="idx" :name="tab.name" :locked="tab.locked" :classes="tab.class"></game-tab-chooser>
+	<div class="tab">
+        <div class="mods">
+            <p>Mods:</p>
+			<mathcremental-mods v-for="(mod, idx) in mods" :idx="idx" :name="mod.name" :likes="mod.likes" :dislikes="mod.dislikes" :like-ratio="mod.likeRatio" :dislike-ratio="mod.dislikeRatio"></mathcremental-mods>
+		</div>
+		<p>You have <h3>{{ mathcrementalModsCount }}</h3> mathcremental mods</p>
+        <p>Mathcremental Modcoins: {{ coins }}</p>
+		<h4>Cooldowns</h4>
+		<game-cooldowns v-for="cooldown in cooldowns" :name="cooldown.name" :seconds-left="cooldown.secondsLeft"></game-cooldowns>
+		<button @click="newMod(0, 0, ...getRatio())">Create a new mod</button>
+        <br />
+        <br />
+        <button>Prestige for {{ calculateCoinsGain }} Mathcremental Modcoins (coming soon)</button>
+    </div>
+    <h6>Stats: {{ floor(mods.reduce((accumulator, currentValue) => accumulator + currentValue.likes, 0)) }} likes, and {{ floor(mods.reduce((accumulator, currentValue) => accumulator + currentValue.dislikes, 0)) }} dislikes.</h6>
+  </body>
+</html>

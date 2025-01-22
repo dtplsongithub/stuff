@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>credits</title>
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=ubuntu">
+	<style>
+		* {
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: 300;
+		}
+	</style>
+	<script src="https://unpkg.com/showdown/dist/showdown.js"></script>
+</head>
+
+<body>
+	<div id="credits">Loading...</div>
+	<script>
+    var converter = new showdown.Converter();
+		fetch("/credits.md").then(res => {
+    if (!res.ok) { document.getElementById("credits").innerHTML = '<h1>Failed to load credits.md</h1>'; return; }
+    res.text().then(credits => {
+      document.getElementById("credits").innerHTML = converter.makeHtml(credits);
+    }).catch(console.error);
+  }).catch(console.error);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+#dot {
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}

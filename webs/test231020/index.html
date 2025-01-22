@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>test231020</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h2>HELLO AND WELCOME TO test231020</h2><pre>pre test
+  im confident <u>html will work here</u> wait it does... it shouldn't...</pre>
+  <span id="hd">loading</span><br>
+  <small>small</small><br>
+  <em>emphasis</em>
+  <details>
+    <summary>click me in a [details tag] test</summary>
+    <p>congrats you clicked me</p>
+  </details>
+  <br>
+  this is a regexp, input.oninput and table test.<br>
+  please insert some text below.<br>
+  <input type="text" id="textst" placeholder="insert random text here" oninput="updateRegExpTest()"></input><br><br>
+  <span id="about"> your table with information will appear here</span>
+  <br> <!-- the magic <br> -->
+  function* yield and transitions test <br>
+  the next value of the fibbonaci series is: <span id="herh"></span><br>
+  <button class="fibutton" onclick="document.getElementById('herh').innerText=iterator.next().value">click to get the next one</button>
+  <script src="script.js"></script>
+  <details>
+    <summary>show code (basically another details test)</summary>
+      <pre>
+        JS:
+        function* hh(){
+          var x = 1;
+          var y = 0;
+          while(true){
+            yield x+y
+            x+=y
+            yield x+y
+            y+=x
+          }
+        }
+        const iterator = hh(0)</pre>
+  </details>
+</body>
+
+</html>

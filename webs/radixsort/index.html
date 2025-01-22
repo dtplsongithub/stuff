@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<!-- if someone sees this pls only edit style.css -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>radixsort</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  Radix sort <br>
+  v1.0 <br>
+
+  <span id="error"></span>
+  <canvas id="canvas" width="1024" height="768"></canvas><br>
+  <hr />
+  <button onclick="sortLSD(); " id="lsdbutton">instant LSD sort</button>
+    
+<button onclick="vsortLSD(); " id="lsdbutton">LSD sort (wip)</button>
+
+  <button onclick="createnewlist();update(false,null,null);" id="cnbutton">create new list of random numbers</button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

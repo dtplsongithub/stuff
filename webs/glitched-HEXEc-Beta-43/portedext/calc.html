@@ -1,0 +1,150 @@
+<!--calculator @ mayank--><script src='js-not-by-me/math.js'></script>
+<textarea id="mem" style="width:20%;height:50%;font-size:16px;display:inline-block;right:90%;  position: absolute;  top: 0;  right: 0;  padding: 0;  margin: 0;" >
+Memory
+</textarea>
+<textarea id="docs" style="width:20%;height:50%;font-size:16px;display:inline-block;right:90%;  position: absolute;  top: 50%;  right: 0;  padding: 0;  margin: 0;" >
+Docs
+(A list of functions)
+-> triangleArea(leg1,leg2)
+        Calculates triangle area.
+        l |__
+        e|    \__
+        g|          \__
+        1|________\
+        leg2
+-> toThePowerOf(number,powerOf)
+        Calculates power of a number.
+        Like 2³ -> toThePowerOf(2,3)
+-> mean([numbers])
+        Calculates mean of numbers.
+        Like mean of 2,4,4
+         = mean([2,4,4])
+-> median([numbers])
+        Calculates median of numbers.
+        Like median of 2,4,4
+         = median([2,4,4])
+-> math.*
+        Anything from math module.
+        Like math.median(123,3)
+        is the median of 123 and 3.
+-> additiveInverse(x)
+        Additive inverse of x.
+-> multiplicativeInverse(x)
+        Multiplicative inverse
+        of x.
+</textarea>
+<style>
+* {
+  font-size: 20px;
+  font-family: "Helvetica", serif;
+}
+button, input, textarea {
+  background-color: whitesmoke;
+  color:grey;
+  border:none;
+  outline:none;
+}
+button:hover {
+  outline: 3px solid blue;
+}
+</style>
+Calcuator
+<script>
+function toThePowerOf(number1,pof) {
+	return number1^pof
+}
+function triangleArea(leg1,leg2) {
+	return (leg1*leg2)/2
+}
+
+function valueDiv(div) {
+  return document.getElementById(div).value
+}
+function mean(arrayList) {
+  return arrayList.reduce((a, b) => a + b, 0)/arrayList.length
+}
+function median(numbers) {
+    const sorted = numbers.slice().sort((a, b) => a - b);
+    const middle = Math.floor(sorted.length / 2);
+
+    if (sorted.length % 2 === 0) {
+        return (sorted[middle - 1] + sorted[middle]) / 2;
+    }
+
+    return sorted[middle];
+}
+
+function additiveInverse(x) {
+  return -x;
+}
+function multiplicativeInverse(x) {
+  return 1/x;
+}
+
+function newfunc(fName,fValue) {
+  var s="function "+fName+" {\n  return "+fValue+"; \n};\n";
+  eval(s)
+  console.log(s)
+}
+</script>
+<!--<br/>-->
+<input type="textbox" id="eq" style="width:1000%;"/>
+<br/><br/>
+<button type="button" onclick="document.getElementById('eq').value+='1'">1</button>
+<button type="button" onclick="document.getElementById('eq').value+='2'">2</button>
+<button type="button" onclick="document.getElementById('eq').value+='3'">3</button>
+<button type="button" onclick="document.getElementById('eq').value+='-'">-</button>
+<br/>
+<button type="button" onclick="document.getElementById('eq').value+='4'">4</button>
+<button type="button" onclick="document.getElementById('eq').value+='5'">5</button>
+<button type="button" onclick="document.getElementById('eq').value+='6'">6</button>
+<button type="button" onclick="document.getElementById('eq').value+='+'">+</button>
+<br/>
+<button type="button" onclick="document.getElementById('eq').value+='7'">7</button>
+<button type="button" onclick="document.getElementById('eq').value+='8'">8</button>
+<button type="button" onclick="document.getElementById('eq').value+='9'">9</button>
+<button type="button" onclick="document.getElementById('eq').value+='*'">*</button>
+<br/>
+<button type="button" onclick="document.getElementById('mem').value=document.getElementById('eq').value+'\n'+document.getElementById('mem').value">M+</button>
+<button type="button" onclick="document.getElementById('eq').value+='0'">0</button>
+<button type="button" onclick="document.getElementById('eq').value+='/'">/</button>
+<br/>
+<button type="button" onclick="document.getElementById('eq').value+='.'">.</button>
+<button type="button" onclick="document.getElementById('eq').value=document.getElementById('eq').value.slice(0,-1);">&lt;</button>
+<button type="button" onclick="document.getElementById('eq').value=eval(document.getElementById('eq').value)">=</button>
+<br/>
+<button type="button" onclick="document.getElementById('eq').value+='('">(</button>
+<button type="button" onclick="document.getElementById('eq').value+=')'">)</button>
+<button type="button" onclick="document.getElementById('eq').value+='['">[</button>
+<button type="button" onclick="document.getElementById('eq').value+=']'">]</button>
+<br/>
+<button type="button" onclick="document.getElementById('eq').value+=','">+ value</button>
+
+  <input list="browsers" name="browser" id="browser">
+  <datalist id="browsers">
+    <option value="triangleArea"> triangleArea(leg1,leg2)</option>
+    <option value="toThePowerOf"> toThePowerOf(number1,powerof) </option>
+    <option value="mean"> mean([Numbers]) </option>
+    <option value="median"> median([Numbers]) </option> <!-- DEVELOPER used STACKOVERFLOW! -->
+    <option value="additiveInverse"> additiveInverse(x) </option>
+    <option value="multiplicativeInverse"> multiplicativeInverse(x) </option>
+  </datalist><button type="button" onclick="document.getElementById('eq').value+=document.getElementById('browser').value"> add function </button>
+<button type="button" onclick="document.getElementById('eq').value=''">clear</button><br/>
+<a href="mailto:mayank.charlotte@gmail.com">Ask for features</a>
+<br/>
+
+<textarea style="display:inline-block;font-size:15px;outline:none;border:none;" width="40" id="customfunc">
+//Add custom functions like 
+function halfOf(string) {
+  return string/2;
+}
+//Don't copy paste other functions since insecure.
+</textarea>
+
+<br/><button type="button" onclick="eval(document.getElementById('customfunc').value)" width="40">Add custom function</button>
+<br/>
+
+<input type='textbox' id='Funcname' value='h(One,Two)' />
+<input type='textbox' id='Funcvalue' value='(One+Two)/2+3' />
+<button type='button' onclick='newfunc(valueDiv("Funcname"),valueDiv("Funcvalue"))'>Create custom function [2]</button>
+

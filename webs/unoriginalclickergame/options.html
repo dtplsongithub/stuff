@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>options</title>
+  <link rel="icon" type="image/x-icon" href="/img/monitor_gear.png">
+  <style id="theme"></style>
+</head>
+
+<body>
+  <h1 class="loading">LOADING...</h1>
+  <h1>OPTIONS</h1>
+  <form name="myForm" action="" method="GET">
+  Theme: <br>
+  <input type="radio" id="theme0" name="theme" value="regulardark">
+  <label for="theme0">regular dark</label><br>
+  <input type="radio" id="theme1" name="theme" value="regularwhite">
+  <label for="theme1">regular white</label><br>
+  <input type="radio" id="theme2" name="theme" value="neongreen">
+  <label for="theme2">neon green</label><br>
+  <input type="radio" id="theme3" name="theme" value="blue">
+  <label for="theme3">neon blue</label><br>
+  <input type="radio" id="theme4" name="theme" value="red">
+  <label for="theme4">neon red</label><br>
+  <input type="radio" id="theme5" name="theme" value="gjjjglgjgshg">
+  <label for="theme5">beautiful</label><br>
+  
+  <input type="button" name="button" value="save" onClick="testResults(this.form)" class="button"><br>
+  </form>
+  <script src="/options.js"></script>
+  <script src="/themes/styleloader.js"></script>
+</body>
+
+</html>

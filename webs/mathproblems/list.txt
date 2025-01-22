@@ -1,0 +1,32 @@
+>1st grade
+1-digit number addition
+1-digit number substraction
+2-digits number comparation
+2-digits number addition
+2-digits number substraction
+>2nd grade
+3-digits number comparation
+3-digits number addition
+3-digits number substraction
+1-digit number multiplication
+1-digit number division
+>3rd grade
+4-digits number comparation
+4-digits number addition
+4-digits number substraction
+2-digit number multiplication
+2-digit number division
+>4th grade
+6-digits number comparation
+6-digits number addition
+6-digits number substraction
+3-digit number multiplication
+3-digit number division
+>5th grade
+exponentiation
+calculation rules with exponentiation (nˣ * nʸ=nˣ⁺ʸ, etc.)
+>6th grade
+uhh??
+>7th grade (still work in progress)
+calculating the square root of a perfect square
+calculating the square root of any number

@@ -1,0 +1,55 @@
+@font-face {
+    src: url(../fonts/MonospaceTypewriter.ttf);
+    font-family: "Typewriter";
+}
+
+* {
+    text-align: center;
+    font-family: 'Typewriter', sans-serif;
+}
+
+body {
+    background: #151d81;
+    color: rgb(237, 244, 255);
+}
+
+button {
+    background: #404ad3;
+    padding: 20px 30px;
+    transition: 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover { 
+    background: #3974a3;
+}
+
+button:active {
+    padding: 15px 20px;
+}
+
+button.delete {
+    background: red;
+}
+
+button.delete:hover {
+    background: rgb(255, 54, 54);
+}
+
+button.tab {
+    padding: 17.5px 10px;
+}
+
+button.tab:active {
+    padding: 20px 15px;
+}
+
+.mods {
+    float: left;
+    background: #627eda;
+}
+
+hr {
+    border: 3px rgb(20, 52, 112) solid;
+}

@@ -1,0 +1,82 @@
+html {
+  height: 100%;
+  width: 100%;
+  background: black;
+  overflow-wrap: break-word;
+  font-size: 20px;
+  overflow-x: hidden;
+  font-family: "Times New Roman" !important;
+}
+pre {
+  background: #00f;
+}
+marquee {
+  background-color: #f00;
+}
+details > summary {
+  background: #333;
+  box-shadow: 2px 2px 2px blue;
+  border-top: blue;
+}
+details > p {
+  background: #333;
+  margin: 0px;
+  box-shadow: 2px 2px 3px blue;
+}
+details > pre {
+  background: #333 !important;
+  margin: 0px;
+  box-shadow: 2px 2px 3px blue;
+}
+body {
+  color: white !important;
+}
+#textst {
+  width:100%;
+  padding: 3px;
+  box-shadow: 4px 4px 4px #000396;
+  color: white;
+  background:#000132;
+  border-left: 2px solid blue;
+  border-right:2px solid blue;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  font-family: "Times New Roman";
+  text-align: center;
+  font-size: 20px;
+}
+table,th , td{
+  border: 2px solid white;
+}
+table{
+  width: 100%;
+}
+td{
+  padding: 5px;
+  width: 33px;
+}
+tr:nth-child(even){
+  background-color: #000396;
+}
+tr:nth-child(odd){
+  background-color: #000132;
+}
+th {
+  padding: 10px;
+}
+.fibutton{
+  transition-duration: 0.3s;
+  background: blue;
+  color: white;
+  text-align: center;
+  font-family: "Times New Roman";
+}
+.fibutton:hover{
+  background: white;
+  color: blue;
+}
+.fibutton:active{
+  background: gray;
+  color: #000132;
+  
+}
