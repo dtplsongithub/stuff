@@ -25,7 +25,7 @@ let webs = [
     ["game", true],
     ["glitched-HEXEc-Beta-43", true],
     ["HEXEc-2", true],
-    ["HEXEc-backup", true],
+    ["HEXEc-backup", false],
     ["HEXEc-server-os", true],
     ["HEXEc-server", false],
     ["HEXEc", false],
