@@ -4,7 +4,8 @@ let musics = [
     ["canri", "xw1385257"],
     ["PINBALL (ft2)", "xw"],
     ["PINBALL (furnace)", "fw"],
-    ["wet hands", "fm"]
+    ["wet hands", "fm"],
+    ["ewhisk c64 cover", "fm1460623"]
 
 ];
 let webs = [
