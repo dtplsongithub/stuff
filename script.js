@@ -1,12 +1,11 @@
 let musics = [
-    ["iar bați câmpii?", "fw1391197"],
-    ["electrical whisk", "xw1388520"],
-    ["canri", "xw1385257"],
+    ["iar bați câmpii?", "fwn1391197"],
+    ["electrical whisk", "xwn1388520"],
+    ["canri", "xwn1385257"],
     ["PINBALL (ft2)", "xw"],
     ["PINBALL (furnace)", "fw"],
     ["wet hands", "fm"],
-    ["ewhisk c64 cover", "fm1460623"]
-
+    ["ewhisk c64 cover", "fmn1460623"]
 ];
 let webs = [
     ["3d", true],
@@ -69,26 +68,26 @@ for (let i = 0; i<musics.length; i++) {
     <div class="bgroup">`;
     let name = musics[i][0];
     let str = musics[i][1];
-    if (str.charAt(0) == "x") {
-        out += `<button onclick="window.location='./music/${name}/${name}.xm'">.xm</button> `;
-    } else {
-        out += `<button onclick="window.location='./music/${name}/${name}.fur'">.fur</button> `;
-    }
-    if (str.charAt(1) == "w") {
-        out += `<button onclick="window.location='./music/${name}/${name}.wav'">.wav</button> `;
-    } else {
-        out += `<button onclick="window.location='./music/${name}/${name}.mp3'">.mp3</button> `;
-    }
-    if (str.length>2) {
-        out += `<button onclick="window.location='https://www.newgrounds.com/audio/listen/${str.substring(2)}'">Newgrounds</button>`;
-    }
+
+    if (str.charAt(0) == "x") out += `<button onclick="window.location='./music/${name}/${name}.xm'">.xm</button> `;
+    else if (str.charAt(0) == "f") out += `<button onclick="window.location='./music/${name}/${name}.fur'">.fur</button> `;
+    else if (str.charAt(0) == "s") out += `<button onclick="window.location='./music/${name}/${name}.sunvox'">.sunvox</button> `;
+
+    if (str.charAt(1) == "w") out += `<button onclick="window.location='./music/${name}/${name}.wav'">.wav</button> `;
+    else if (str.charAt(1) == "m") out += `<button onclick="window.location='./music/${name}/${name}.mp3'">.mp3</button> `;
+    else if (str.charAt(1) == "o") out += `<button onclick="window.location='./music/${name}/${name}.ogg'">.ogg</button> `;
+    else if (str.charAt(1) == "p") out += `<button onclick="window.location='./music/${name}/${name}.opus'">.opus</button> `;
+
+    if (str.length>2)
+        if (str.charAt(2) == "n") out += `<button onclick="window.location='https://www.newgrounds.com/audio/listen/${str.substring(3)}'">Newgrounds</button>`;
+        else if (str.charAt(2) == "m") out += `<button onclick="window.location='https://modarchive.org/module.php?${str.substring(3)}'">The Mod Archive</button>`;
     out += `</div>
     </div><br>`;
     document.getElementById("musics").innerHTML += out;
 }
 
 
-// load ze musicers
+// load ze musicers this aint music!! this is WebSite
 websdoc = document.getElementById("webs");
 for (let i = 0; i<webs.length; i++) {
     let name = webs[i][0];
