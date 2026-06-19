@@ -54,6 +54,17 @@ h1.title {
     }
 }
 
+@keyframes scroll512pxbg {
+        0% {
+        background-position-x: 0px;
+        background-position-y: 0px;
+    }
+        100% {
+        background-position-x: 512px;
+        background-position-y: 512px;
+    }
+}
+
 button {
     padding:0;
     background: #ddd;
@@ -84,6 +95,7 @@ button:active {
     background: #00000077 url("./assets/stars.png");
     animation: lightglow 5s infinite, scroll256pxbg 10s infinite;
     animation-timing-function: linear;
+    flex: 1;
 }
 
 .elem {
@@ -105,4 +117,21 @@ button:active {
 }
 .bgroup {
     border-left: 3px solid#fff;
+}
+a:active {
+    color:white;
+}
+a:visited, a {
+    color: #0ff;
+}
+
+.albumcover {
+    float:right;
+    width: 350px;
+    height: auto;
+    padding: 15px;
+}
+
+.album {
+    height:384px;
 }
