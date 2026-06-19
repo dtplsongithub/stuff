@@ -25,10 +25,10 @@ let tracks = [
 ]
 
 for (let i = 0; i<tracks.length; i++) {
-    document.getElementById("tracks").innerHTML += `${i+1}. ${tracks[i]}    <button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.wav'">Download</button><br>`;
+    document.getElementById("tracks").innerHTML += `<div class="elem">${i+1}. ${tracks[i]}    <div class="bgroup"><button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.wav'">Download</button></div></div><br>`;
         //／ is differernt!!
 }
-document.getElementById("tracks").innerHTML += "<hr>Released 2026 June 19";
+document.getElementById("tracks").innerHTML += "<hr>Released 2026 June 19 <a href='../../index.html'>Go back</a>";
         </script>
     </body>
 </html>
