@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>chipmix2 ep</title>
+        <title>ChipMix2 ep</title>
         <link href="../../style.css" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/x-icon" href="./cover.ico">
         <meta name="description" content="ChipMix2 ep"/>
@@ -13,27 +13,11 @@
         <meta property="og:image:height" content="128" />
     </head>
     <body style="background: url('./cover.png'); animation:scroll512pxbg 5s infinite; animation-timing-function: linear;">
-        <h1 class="title">ChipMix2</h1>
+        <h1 class="title" id="title">ChipMix2</h1>
         <div class="bkg"></div>
         <div class="con album">
             <div><img src="./cover.png" class="albumcover"><div id="tracks"></div></div>
-            
         </div>
-        <script>
-let tracks = [
-    "IO",
-    "//.;",
-    "p",
-    "pata",
-    "jxv:",
-    "/p @give apple [fix]"
-]
-
-for (let i = 0; i<tracks.length; i++) {
-    document.getElementById("tracks").innerHTML += `<div class="elem">${i+1}. ${tracks[i]}    <div class="bgroup"><button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.wav'">Download</button></div></div><br>`;
-        //／ is differernt!!
-}
-document.getElementById("tracks").innerHTML += "<hr>Released 2026 June 19 <br><a href='../../index.html'>Go back</a>";
-        </script>
+        <script src="../../albumscript.js"></script>
     </body>
 </html>
