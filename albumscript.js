@@ -23,14 +23,34 @@ let t = {
         "type":[
             "sunvox","vcv","vcv"
         ]
+    },
+    "guivo vol ii": {
+        "tracks":[
+            "INTERROBANG1",
+            "INTERROBANG2",
+            "K82TalkAbout",
+            "GOT303_FT_FD",
+            "AMEUBUL85Rem",
+            "CDRMIX Inclu",
+            "WTHSLPRemRNC"
+        ],
+        "releasedate": "2026 August 3",
+        "type":[
+            "xm", "xm", "sunvox", "xm", "sunvox", "xm","xm"
+        ],
+        "disableSourceDownload":[false,true]
     }
 }
 let name = document.getElementById("title").innerHTML
 let tracks=t[name].tracks
 let type=t[name].type
 let releasedate= t[name].releasedate
+let disableSourceDownload= t[name].disableSourceDownload;
 for (let i = 0; i<tracks.length; i++) {
-    document.getElementById("tracks").innerHTML += `<div class="elem">${i+1}. ${tracks[i]}    <div class="bgroup"><button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.${type[i]}'"> .${type[i]}</button> <button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.wav'">.wav</button></div></div><br>`;
+    let out = `<div class="elem">${i+1}. ${tracks[i]}    <div class="bgroup">`;
+    if (disableSourceDownload == undefined || !disableSourceDownload[i]) out += `<button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.${type[i]}'"> .${type[i]}</button> `; // download source
+    out += `<button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.wav'">.wav</button></div></div><br>`; // download wav
+    document.getElementById("tracks").innerHTML += out; 
         //／ is differernt!!
 }
 document.getElementById("tracks").innerHTML += `<hr>Released ${releasedate} <br><a href='../../index.html'>Go back</a>`;

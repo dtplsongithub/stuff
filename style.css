@@ -95,7 +95,6 @@ button:active {
     background: #00000077 url("./assets/stars.png");
     animation: lightglow 5s infinite, scroll256pxbg 10s infinite;
     animation-timing-function: linear;
-    flex: 1;
 }
 
 .elem {
@@ -126,12 +125,16 @@ a:visited, a {
 }
 
 .albumcover {
-    float:right;
-    width: 350px;
+    margin:auto;
+    width: 384px;
     height: auto;
-    padding: 15px;
 }
 
-.album {
-    height:384px;
+table {
+    margin:auto;
+    width:80%;
+}
+
+.tac {
+    width: 384px;
 }
