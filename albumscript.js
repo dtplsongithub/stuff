@@ -47,7 +47,7 @@ let type=t[name].type
 let releasedate= t[name].releasedate
 let disableSourceDownload= t[name].disableSourceDownload;
 for (let i = 0; i<tracks.length; i++) {
-    let out = `<div class="elem">${i+1}. ${tracks[i]}    <div class="bgroup">`;
+    let out = `<div class="elem"><div class="name">${i+1}. ${tracks[i]}</div>    <div class="bgroup">`;
     if (disableSourceDownload == undefined || !disableSourceDownload[i]) out += `<button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.${type[i]}'"> .${type[i]}</button> `; // download source
     out += `<button onclick="window.location='./${i+1}. d - ${tracks[i].replaceAll("/","／").replaceAll(":","")}.wav'">.wav</button></div></div><br>`; // download wav
     document.getElementById("tracks").innerHTML += out; 
